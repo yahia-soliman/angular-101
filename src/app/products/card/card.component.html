@@ -1,14 +1,31 @@
 <div class="card">
-  <img src="assets/images/product2.png" class="card-img-top" alt="...">
-  <div class="card-body">
-    <div class="badges">
-        <span class="badge bg-info">New</span>
-        <span class="badge bg-danger mx-1">Sale</span>
+  <img [src]="product.img" class="card-img-top">
+  <div class="card-body py-0">
+    <h4 class="card-title">{{product.name}}</h4>
+    <div class="d-flex justify-content-between">
+      <h5 class="text-primary">$ {{product.price}}</h5>
+      <span [ngClass]="{
+        'bg-danger': product.qty === 0,
+        'bg-warning text-dark': product.qty === 1,
+        'bg-success': product.qty > 1
+      }" class="badge rounded-pill align-self-start">
+        {{
+        product.qty > 1 ? product.qty + ' left' :
+        product.qty == 1 ? 'only 1 left':
+        'not availabe'
+        }}
+      </span>
     </div>
-    <h4 class="card-title">Jeans T-shirt</h4>
-    <h5 class="text-success">$23
-<span class="mx-1 text-secondary text-small"><s>$40</s></span>
-    </h5>
-    
+  </div>
+  <div class="card-footer d-grid">
+    <button [ngClass]="{
+            'btn-outline-secondary': product.qty === 0,
+            'btn-outline-warning': product.qty === 1,
+            'btn-outline-success': product.qty > 1
+        }"
+        (click)="buy()"
+        class="btn" [disabled]="!product.qty">
+      {{product.qty? 'Buy Now' : 'Sold Out'}}
+    </button>
   </div>
 </div>
