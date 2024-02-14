@@ -1,0 +1,44 @@
+<form class="container my-3 text-muted">
+
+  <h2>Add new product</h2>
+  <div class="form-floating my-3">
+    <input
+    type="text" required
+    class="form-control"
+    id="title" name="title"
+    placeholder="Product name"
+    [(ngModel)]="product.name"
+    >
+    <label for="title">Product name</label>
+  </div>
+  <div class="form-floating my-3">
+    <input
+    type="number" min="0"
+    class="form-control"
+    id="price" name="price"
+    placeholder="Product title"
+    [(ngModel)]="product.price"
+    >
+    <label for="price">Total price</label>
+  </div>
+  <div class="form-floating my-3">
+    <input
+    type="number" min="0"
+    class="form-control"
+    id="quantity" name="quantity"
+    placeholder="Available quantity"
+    [(ngModel)]="product.qty"
+    >
+    <label for="quantity">Available quantity</label>
+  </div>
+  <div class="form-floating my-3">
+    <input
+    type="text" required
+    class="form-control"
+    id="img" name="image"
+    placeholder="Image url"
+    [(ngModel)]="product.img"
+    >
+    <label for="title">Image url</label>
+  </div>
+</form>

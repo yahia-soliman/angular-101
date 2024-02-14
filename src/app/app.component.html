@@ -1,7 +1,7 @@
-<app-nav></app-nav>
-<app-slider></app-slider>
-<section class="container">
-<app-about class="col-12"></app-about>
-<app-card-list class="row g-3"></app-card-list>
-<app-footer></app-footer>
-</section>
+<div style="min-height: 100vh;" class="d-flex flex-column justify-content-between">
+  <app-nav></app-nav>
+  <router-outlet></router-outlet>
+  <div class="container mt-auto">
+    <app-footer></app-footer>
+  </div>
+</div>

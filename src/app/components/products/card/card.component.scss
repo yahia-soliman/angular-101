@@ -1,0 +1,12 @@
+.actions>i{
+  cursor: pointer;
+  font-size: 20px;
+  margin-right: 6px;
+  text-shadow: 1px 1px 3px #aaa;
+  transition: all 0.2s ease;
+  position: relative;
+  &:active {
+    text-shadow: none;
+    top: 1px; left: 1px;
+  }
+}
