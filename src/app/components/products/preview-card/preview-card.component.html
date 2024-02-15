@@ -1,10 +1,11 @@
 <div class="card">
-  <div class="actions my-2 mx-3 d-flex position-absolute">
-    <i (click)="deleteProduct()" class="text-danger bi bi-x-circle-fill"></i>
-    <i [routerLink]="['/products' ,'edit', product.id]" class="text-warning bi bi-wrench-adjustable-circle-fill"></i>
-    <i [routerLink]="['/products', product.id]" class="text-success bi bi-arrow-up-right-circle-fill"></i>
-  </div>
-  <img [src]="product.img" class="card-img-top" (error)="setAltImg()">
+  <img
+  [src]="product.img"
+  class="card-img-top"
+  (load)="imgErr = false"
+  (error)="imgErr = true"
+  [class.holder-bg]="imgErr"
+  >
   <div class="card-body py-0">
     <h4 class="card-title">{{product.name}}</h4>
     <div class="d-flex justify-content-between">
@@ -27,9 +28,7 @@
             'btn-outline-secondary': product.qty === 0,
             'btn-outline-warning': product.qty === 1,
             'btn-outline-success': product.qty > 1
-        }"
-        (click)="buy()"
-        class="btn" [disabled]="!product.qty">
+        }" disabled class="btn">
       {{product.qty? 'Buy Now' : 'Sold Out'}}
     </button>
   </div>

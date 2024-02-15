@@ -1,4 +1,40 @@
 * {
     padding: 0; margin: 0;
     box-sizing: border-box;
+    transition: all ease 0.2s;
+    font-family: "Andika", sans-serif;
+}
+
+body {
+  overflow-x: hidden ;
+}
+
+.amatic-regular {
+  font-family: "Amatic SC", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.andika-regular {
+  font-family: "Andika", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.andika-bold {
+  font-family: "Andika", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.andika-italic {
+  font-family: "Andika", sans-serif;
+  font-weight: 400;
+  font-style: italic;
+}
+
+.andika-bold-italic {
+  font-family: "Andika", sans-serif;
+  font-weight: 700;
+  font-style: italic;
 }

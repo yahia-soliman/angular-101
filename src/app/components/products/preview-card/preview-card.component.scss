@@ -1,0 +1,19 @@
+
+img {
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  object-position: top;
+}
+
+.holder-bg {
+  background-image: url(/assets/images/alt.png);
+  background-size: contain;
+  content-visibility: hidden;
+}
+
+.card-body {
+  min-height: 70px;
+}
+.card-title {
+  min-height: 30px;
+}

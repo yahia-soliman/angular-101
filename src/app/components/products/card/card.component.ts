@@ -1,4 +1,6 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { ProductService } from 'src/app/services/product.service';
+import { Iproduct } from 'src/app/shared/interfaces/iproduct';
 
 @Component({
   selector: 'app-card',
@@ -6,19 +8,20 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
   styleUrls: ['./card.component.scss']
 })
 export class CardComponent {
+  constructor (private service: ProductService) {}
+
   @Input()
-  product: {
-    id: number,
-    name: string,
-    qty: number,
-    price: number,
-    img: string,
-  } = {id: 0, name: '', qty: 0, price: 0, img: ''};
-  @Output()
-  onBuy = new EventEmitter();
+  product = {} as Iproduct;
 
   buy() {
-    this.product.qty--;
-    this.onBuy.emit()
+    this.service.addToCart();
+  }
+
+  deleteProduct() {
+    this.service.delete(this.product.id);
+  }
+
+  setAltImg() {
+    this.product.img = '/assets/images/alt.png'
   }
 }

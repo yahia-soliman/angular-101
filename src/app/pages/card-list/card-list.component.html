@@ -1,13 +1,9 @@
 <section class="container">
   <div class="d-flex justify-content-between my-3">
     <h2>Our Products</h2>
-    <button type="button" disabled class="btn btn-outline-secondary">
-      <img src="/assets/images/cart.png" class="cart">
-      <span *ngIf="cart" class="badge bg-secondary">{{cart}}</span>
-    </button>
   </div>
   <section class="row g-3">
-    <app-card *ngFor="let item of products" class="col-sm-6 col-md-4 col-lg-3" (onBuy)="addToCart()" [product]="item">
+    <app-card *ngFor="let item of products" class="col-sm-6 col-md-4 col-lg-3" [product]="item">
     </app-card>
   </section>
 </section>
