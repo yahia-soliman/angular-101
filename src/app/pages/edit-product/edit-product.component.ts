@@ -21,13 +21,17 @@ export class EditProductComponent implements OnInit {
   ngOnInit(): void {
     console.log(this.route)
     const id = this.route.snapshot.params['id'];
-    const prod = this.service.getOne(id) || this.product;
-    this.product = { ...prod };
+    this.service.getOne(id).subscribe({
+      next: (prod) => this.product = { ...prod as Iproduct }
+    });
   }
 
   updateProduct(form: FormGroup) {
-    this.service.update(this.product);
-    this.submitted = true;
-    form.disable();
+    this.service.update(this.product).subscribe({
+      complete: () => {
+        this.submitted = true;
+        form.disable();
+      }
+    });
   }
 }

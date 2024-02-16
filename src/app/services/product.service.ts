@@ -1,37 +1,35 @@
-import { Iproduct } from '../shared/interfaces/iproduct';
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Iproduct } from '../shared/interfaces/iproduct';
 
-import productsData from '../shared/data/products.list';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductService {
-  products: Iproduct[] = productsData;
+  dbUrl = 'http://localhost:3000/products/';
   cart = 0;
 
-  getAll() { return this.products }
+  constructor(private http: HttpClient) { }
 
-  getOne(id: string): Iproduct | undefined {
-    return this.products.find((item) => item.id === id);
+  getAll() {
+    return this.http.get(this.dbUrl);
+  }
+
+  getOne(id: string) {
+    return this.http.get(this.dbUrl + id);
   }
 
   create(product: Iproduct) {
-    product.id = Math.random().toString(36).slice(2, 7);
-    this.products.push(product);
-    return this.products;
+    return this.http.post(this.dbUrl, product);
   }
 
-  update(data:Iproduct) {
-    const idx = this.products.findIndex(item => item.id === data.id);
-    this.products[idx] = data;
-    return this.products;
+  update(data: Iproduct) {
+    return this.http.put(this.dbUrl + data.id, data);
   }
 
   delete(id: string) {
-    const idx = this.products.findIndex(item => item.id === id);
-    this.products.splice(idx, 1);
-    return this.products;
+    return this.http.delete(this.dbUrl + id);
   }
 
   addToCart() { this.cart++; }

@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { ProductService } from 'src/app/services/product.service';
 import { Iproduct } from 'src/app/shared/interfaces/iproduct';
 
@@ -10,15 +10,18 @@ import { Iproduct } from 'src/app/shared/interfaces/iproduct';
 export class CardComponent {
   constructor (private service: ProductService) {}
 
+  @Output()
+  onDelete = new EventEmitter();
   @Input()
   product = {} as Iproduct;
 
   buy() {
+    this.product.qty--;
     this.service.addToCart();
   }
 
   deleteProduct() {
-    this.service.delete(this.product.id);
+    this.onDelete.emit(this.product.id)
   }
 
   setAltImg() {
