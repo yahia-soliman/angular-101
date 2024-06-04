@@ -34,5 +34,9 @@ export class ProductService {
     return this.products;
   }
 
-  addToCart() { this.cart++; }
+  addToCart(id: string) {
+    const product = this.products.find(item => item.id === id);
+    if (product) product.qty--;
+    this.cart++;
+  }
 }

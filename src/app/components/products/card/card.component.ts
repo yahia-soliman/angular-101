@@ -14,7 +14,7 @@ export class CardComponent {
   product = {} as Iproduct;
 
   buy() {
-    this.service.addToCart();
+    this.service.addToCart(this.product.id);
   }
 
   deleteProduct() {
