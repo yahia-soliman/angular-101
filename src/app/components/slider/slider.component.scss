@@ -1,7 +1,0 @@
-.carousel img {
-    height: 500px;
-    object-fit: cover;
-    @media screen and (max-width: 720px) {
-        & { height: 250px; }
-    }
-}
